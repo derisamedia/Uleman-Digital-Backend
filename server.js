@@ -233,8 +233,7 @@ app.post('/api/config', upload.any(), (req, res) => {
     if (req.files && req.files.length > 0) {
       req.files.forEach(file => {
         const fieldName = file.fieldname;
-        const baseUrl = process.env.BASE_URL || `${req.protocol}://${req.get('host')}`;
-        const newUrl = `${baseUrl}/uploads/${file.filename}`;
+        const newUrl = `/uploads/${file.filename}`;
         
         // Remove existing text update if overridden by file upload
         const fieldIndex = fields.findIndex(f => f === `${fieldName} = ?`);
