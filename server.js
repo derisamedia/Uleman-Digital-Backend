@@ -303,9 +303,32 @@ app.post('/api/rsvps', (req, res) => {
       name,
       status,
       guests,
-      message,
       message: "RSVP submitted successfully!"
     });
+  });
+});
+
+// DELETE single RSVP by ID
+app.delete('/api/rsvps/:id', (req, res) => {
+  const { id } = req.params;
+  db.run(`DELETE FROM rsvps WHERE id = ?`, [id], function (err) {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    if (this.changes === 0) {
+      return res.status(404).json({ error: 'RSVP not found' });
+    }
+    res.json({ message: `RSVP with id ${id} deleted successfully.` });
+  });
+});
+
+// DELETE all RSVPs (bulk delete)
+app.delete('/api/rsvps', (req, res) => {
+  db.run(`DELETE FROM rsvps`, [], function (err) {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json({ message: `All RSVPs deleted. Total removed: ${this.changes}` });
   });
 });
 
