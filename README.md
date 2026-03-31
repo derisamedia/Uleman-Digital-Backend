@@ -4,6 +4,12 @@ A robust Node.js and Express backend service for the **Uleman Digital** platform
 
 This backend acts as the core data engine, handling wedding configurations, dynamic content administration, file uploads (images & background music), and comprehensive RSVP management.
 
+## 🖼️ Preview
+
+![Uleman Digital Backend - Status Dashboard](./assets/preview.png)
+
+> Tampilan **Status Web UI** bawaan yang dapat diakses di root endpoint (`/`), menampilkan status sistem, koneksi database, port aktif, uptime server, dan daftar REST API endpoint yang tersedia.
+
 ## 🚀 Features
 
 - **Dynamic Configuration API**: Read and update all details (couple names, dates, maps, themes, banking information for gifts) from an admin dashboard.
